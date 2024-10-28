@@ -1,0 +1,7 @@
+* Borislav Perikliev emacs file
+
+** Base config file
+
+*** Uploaded the base file for future upgrades.
+
+**** 
