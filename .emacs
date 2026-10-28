@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(Server-Start T)
  '(column-number-mode 1)
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
@@ -14,8 +15,8 @@
  '(display-line-numbers-type 'relative)
  '(display-time-mode t)
  '(electric-pair-mode t)
- ;;'(global-company-mode t)
  '(global-auto-complete-mode nil)
+ '(global-company-mode)
  '(global-display-line-numbers-mode t)
  '(global-whitespace-mode t)
  '(ido-everywhere t)
@@ -28,25 +29,27 @@
  '(org-bullets-mode t t)
  '(org-mode t)
  '(package-selected-packages
-   '(## ag auto-complete-c-headers auto-complete-clang auto-org-md
-        bash-completion bilibili cargo-mode clojure-mode cmake-mode
-        company-c-headers competitive-programming-snippets d-mode
-        dockerfile-mode dotnet drag-stuff duplicate-thing elpy emms
-        exwm exwm-edit exwm-firefox-core exwm-float flylisp glsl-mode
-        gnu-elpa gnu-elpa-keyring-update go-mode graphviz-dot-mode
+   '(## ada-mode ag auto-complete-c-headers auto-complete-clang
+        auto-org-md bash-completion bilibili cargo-mode clojure-mode
+        cmake-mode company-c-headers competitive-programming-snippets
+        d-mode d2-mode dockerfile-mode dotnet drag-stuff
+        duplicate-thing elpy emms emms-player-mpv-jp-radios
+        emms-player-spotify emms-soundcloud emms-state exwm exwm-edit
+        exwm-firefox-core exwm-float flylisp glsl-mode gnu-elpa
+        gnu-elpa-keyring-update go-mode graphviz-dot-mode
         gruber-darker-theme haskell-mode helm-bitbucket helm-lsp iedit
         jinja2-mode julia-mode kotlin-mode latex-extra lua-mode
         magit-ido marginalia mc-extras nginx-mode nim-mode nix-mode
-        ob-janet ob-mongo ob-powershell ob-tmux ob-typescript
-        org-beautify-theme org-bullets org-elisp-help org-elp org-emms
-        org-roam package+ php-mode purescript-mode qml-mode quelpa
-        racket-mode rfc-mode rust-mode rustic scala-mode smex sml-mode
-        toml-mode tree-sitter tuareg typescript-mode vertico yaml-mode))
+        ob-ada-spark ob-janet ob-mongo ob-powershell ob-prolog ob-tmux
+        ob-typescript org-beautify-theme org-bullets org-elisp-help
+        org-elp org-emms org-page org-roam package+ php-mode
+        purescript-mode qml-mode quelpa racket-mode rfc-mode rust-mode
+        rustic scala-mode smex sml-mode toml-mode tree-sitter tuareg
+        typescript-mode vertico yaml-mode))
  '(recentf-mode t)
  '(save-place-mode t)
  '(scroll-bar-mode nil)
  '(semantic-mode t)
- '(Server-Start T)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
  '(transient-mark-mode t)
@@ -124,10 +127,10 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x M-x") 'execute-extended-command)
 
-(global-set-key (kbd "M-[") 'shrink-window-horizontally)
-(global-set-key (kbd "M-]") 'enlarge-window-horizontally)
-(global-set-key (kbd "C-{") 'shrink-window)
-(global-set-key (kbd "C-}") 'enlarge-window)
+(global-set-key (kbd "M-[") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-]") 'shrink-window-horizontally)
+(global-set-key (kbd "C-{") 'enlarge-window)
+(global-set-key (kbd "C-}") 'shrink-window)
 
 (require 'dash)
 
@@ -198,7 +201,9 @@
         "/usr/lib/gcc/x86_64-linux-gnu/15/include"
         "/usr/local/include"
         "/usr/include/x86_64-linux-gnu"
-        "/usr/include"))
+        "/usr/include"
+        "/usr/include/x86_64-linux-gnu/qt5/"
+        "/usr/include/x86_64-linux-gnu/qt6/"))
 
 ;=========================================================================================================
 
@@ -233,13 +238,14 @@
         "--fallback-flags=-std=c++20 -I/usr/include/c++/15 -I/usr/include/x86_64-linux-gnu/c++/15 -I/usr/include/c++/15/backward -I/usr/lib/gcc/x86_64-linux-gnu/15/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include"))
 
 (require 'multiple-cursors)
+(require 'mc-extras)
+(global-set-key (kbd "C-S-j")       'mc/mark-all-dwim)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->")         'mc/mark-next-like-this)
 (global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
 (global-set-key (kbd "C-\"")        'mc/skip-to-next-like-this)
 (global-set-key (kbd "C-:")         'mc/skip-to-previous-like-this)
-(require 'mc-extras)
 (require 'which-key)
 (require 'yasnippet)
 
@@ -269,6 +275,8 @@
         ("DONE" . (:foreground "green1" :weight bold))))
 
 (require 'ob)
+(require 'ob-awk)
+(require 'ob-ada-spark-autoloads)
 (require 'ob-python)   ; For Python
 (require 'ob-ruby)     ; For Ruby
 (require 'ob-java)     ; For Java
@@ -344,7 +352,7 @@
    (swift . t)))
 
 ;=========================================================================================================
-
+(require 'ada-mode)
 (require 'scala-mode)
 (require 'd-mode)
 (require 'yaml-mode)
