@@ -1,0 +1,7 @@
+* .Emacs
+
+** The config file for my emacs.
+
+*** Uploaded the base file for future upgrades.
+
+**** 
