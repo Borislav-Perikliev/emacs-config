@@ -203,7 +203,11 @@
         "/usr/include/x86_64-linux-gnu"
         "/usr/include"
         "/usr/include/x86_64-linux-gnu/qt5/"
-        "/usr/include/x86_64-linux-gnu/qt6/"))
+        "/usr/include/x86_64-linux-gnu/qt6/"
+        "/usr/include/x86_64-linux-gnu/qt5/QtCore/"
+        "/usr/include/x86_64-linux-gnu/qt6/QtCore/"
+        "/usr/include/x86_64-linux-gnu/qt5/QtWidgets/"
+        "/usr/include/x86_64-linux-gnu/qt6/QtWidgets/"))
 
 ;=========================================================================================================
 
